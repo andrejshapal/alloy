@@ -71,7 +71,7 @@ func (r *rollingAverageCalculator) GetAverage() time.Duration {
 		}
 	}
 	if count == 0 || count < r.minEntries {
-		return r.defaultDuration
+		return 2 * time.Minute
 	}
 	d := total / time.Duration(count)
 	if d < r.minDuration {
