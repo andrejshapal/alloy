@@ -217,6 +217,7 @@ func (t *tailer) tail(ctx context.Context, handler loki.EntryHandler) error {
 					avg := calc.GetAverage()
 					last := calc.GetLast()
 					if last.IsZero() {
+						calc.AddTimestamp(time.Now())
 						continue
 					}
 					s := time.Since(last)
